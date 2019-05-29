@@ -14,14 +14,16 @@ const Login = ({ login, isAuthenticated }) => {
 
   const { email, password } = formData;
 
-  const onChange = e =>
+  const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const onSubmit = async e => {
     e.preventDefault();
     login(email, password);
   };
 
+  console.log(isAuthenticated);
   // Redirect if logged in
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
@@ -43,6 +45,7 @@ const Login = ({ login, isAuthenticated }) => {
               name="email"
               value={email}
               onChange={e => onChange(e)}
+              required
             />
           </div>
           <div className="form-group">
